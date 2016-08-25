@@ -23,7 +23,8 @@ export default class SearchContainer extends React.Component {
       results: [],
       ingredients: [],
       pantry: {},
-      selected: false
+      selected: false,
+      user: false
     }
   }
 

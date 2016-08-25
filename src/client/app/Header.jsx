@@ -39,10 +39,9 @@ export default class Header extends React.Component {
   // }
 
   render(){
-    // if(!this.props.user){
+    if(!this.props.user){
     return (
-      <div className="smallHeader">
-        <a href="/"><img className="logo" src={cookItLogoSm}/></a>
+      <div className="header">
         <div className='login'>
           <form action="post" className="signIn" onSubmit={this.handleSubmit.bind(this)}>
             <table>
@@ -68,35 +67,35 @@ export default class Header extends React.Component {
                 </tr>
               </tbody>
             </table>
-
           </form>
         </div>
+        <img className="logo" src={cookItLogo}/>
       </div>
     )
-  // } else {
-  //   return (
-  //     <div className="headerUser">
-  //       <h1>FlakeBot</h1>
-  //       <img className="fBUser" src="http://www.videogamesprites.net/Earthbound/Party/Ness/Ness%20(Robot)%20(Front).gif" alt=""/>
+  } else {
+    return (
+      <div className="headerUser">
+        <h1>FlakeBot</h1>
+        <img className="fBUser" src="http://www.videogamesprites.net/Earthbound/Party/Ness/Ness%20(Robot)%20(Front).gif" alt=""/>
 
-  //         <table className='signedIn'>
-  //           <tbody>
-  //             <tr>
-  //               <td>
-  //                 <button onClick={this.bro.bind(this)}>Talk to FlakeBot</button>
-  //               </td>
-  //               <td>
-  //                 <button onClick={this.myEvents.bind(this)}>My Events</button>
-  //               </td>
-  //               <td>
-  //                 <button onClick={this.clearLocalStorage.bind(this)}>Log Out</button>
-  //               </td>
-  //             </tr>
-  //           </tbody>
-  //         </table>
-  //     </div>
-  //   )
-  // }
+          <table className='signedIn'>
+            <tbody>
+              <tr>
+                <td>
+                  <button onClick={this.bro.bind(this)}>Talk to FlakeBot</button>
+                </td>
+                <td>
+                  <button onClick={this.myEvents.bind(this)}>My Events</button>
+                </td>
+                <td>
+                  <button onClick={this.clearLocalStorage.bind(this)}>Log Out</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    )
+  }
   }
 }
 
