@@ -80,17 +80,17 @@ export default class SearchContainer extends React.Component {
     let item = {item:event.target.value}
     console.log()
     ajax.addPantry(item).then(pantry=>{
-    ajax.pantryCall().then(pantry=>{
-        this.setState({ pantry: pantry,
-       })
-    })})
+    ajax.getUserPantry(localStorage.user_id).then(pantry=>{
+        this.setState({ pantry: pantry })
+      })
+    })
   }
 
   deleteFromPantry(event){
     event.preventDefault();
     let item = {item: event.target.value}
     ajax.deletePantry(item).then(pantry=>{
-      ajax.pantryCall().then(pantry=>{
+      ajax.getUserPantry(localStorage.user_id).then(pantry=>{
         this.setState({pantry: pantry})
       })
     })
@@ -137,7 +137,7 @@ export default class SearchContainer extends React.Component {
     }
 
   userLogIn(){
-    ajax.getMyPantry(localStorage.user_id).then( myPantry => {
+    ajax.getUserPantry(localStorage.user_id).then( myPantry => {
       this.setState({
         pantry: myPantry,
         user:true,

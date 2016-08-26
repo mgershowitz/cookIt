@@ -27,14 +27,14 @@ const ajaxAdapter = {
     .then( r => r.json())
   },
 
-  getUserPantry() {
-    return fetch('/pantry')
+  getUserPantry(id) {
+    return fetch(`/pantry/${id}`)
     .then(res=>res.json())
   },
 
   addPantry(item){
     console.log(item)
-    return fetch('/pantry',{
+    return fetch(`/pantry/${localStorage.user_id}`,{
       method:'POST',
       headers:{
         "Content-type": "application/json; charset=UTF-8"
@@ -45,7 +45,7 @@ const ajaxAdapter = {
   },
 
   deletePantry(item){
-    return fetch('/pantry',{
+    return fetch(`/pantry/${localStorage.user_id}`,{
       method:'DELETE',
       headers:{
         "Content-type": "application/json; charset=UTF-8"
