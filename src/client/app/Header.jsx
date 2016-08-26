@@ -74,6 +74,12 @@ export default class Header extends React.Component {
             </table>
           </form>
         </div>
+          <form className="signUp" action="post" onSubmit={this.props.onCreateUser} >
+            <input type="text" name="username" placeholder="New Username"/><br/>
+            <input type="text" name="email" placeholder="New Email"/><br/>
+            <input type="password" name="password" placeholder="New Password"/><br/>
+            <input type="submit" value="Sign Up!"/>
+          </form>
         <img className="logo" src={cookItLogo}/>
       </div>
     )

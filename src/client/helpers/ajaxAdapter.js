@@ -16,8 +16,16 @@ const ajaxAdapter = {
   },
 
   loginUser(user){
-    return fetch('/')
-  }
+    return fetch('/api/authenticate',{
+      method:'POST',
+      headers:{
+        "Content-type": "application/json; charset=UTF-8",
+        "authorization": ["Bearer",localStorage.token]
+      },
+      body: JSON.stringify(user)
+    })
+    .then( r => r.json())
+  },
 
   getUserPantry() {
     return fetch('/pantry')

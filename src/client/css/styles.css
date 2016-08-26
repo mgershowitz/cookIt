@@ -41,7 +41,16 @@ h4 {
   position: fixed;
   right:3%;
   top:2%;
+}
+
+.login label {
   color: #fff;
+}
+
+.signUp {
+  position: fixed;
+  right:3%;
+  top:15%;
 }
 
 .jumbotron{

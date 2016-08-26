@@ -11,6 +11,8 @@ import Login            from './Login.jsx'
 import CreateUser       from './CreateUser.jsx'
 import SmallLogo        from './SmallLogo.jsx'
 import Header           from './Header.jsx'
+const jwtDecode         = require('jwt-decode');
+
 
 export default class SearchContainer extends React.Component {
 
@@ -24,7 +26,7 @@ export default class SearchContainer extends React.Component {
       ingredients: [],
       pantry: {},
       selected: false,
-      user: true
+      user: false
     }
   }
 
@@ -108,6 +110,32 @@ export default class SearchContainer extends React.Component {
     })
   }
 
+  createNewUser(event){
+    event.preventDefault();
+    let thing = event.target
+    let newUser = {
+      username: event.target.username.value,
+      email: event.target.email.value,
+      password: event.target.password.value
+    }
+    let user = {
+      username: newUser.username,
+      password: newUser.password
+    }
+    ajax.createUser(newUser).then(
+      setTimeout(()=>{
+        ajax.loginUser(user).then( user => {
+        localStorage.setItem('token', user.token)
+        localStorage.setItem('user_id', jwtDecode(user.token).user_id)
+        if(user.success){
+          this.userLogIn()
+        } else {
+          thing.reset()
+        }
+      })}, 500)
+      )
+    }
+
   userLogIn(){
     ajax.getMyPantry(localStorage.user_id).then( myPantry => {
       this.setState({
@@ -183,7 +211,8 @@ export default class SearchContainer extends React.Component {
           <Header
           user={this.state.user}
           userLoggedIn={this.userLogIn.bind(this)}
-          userLoggedOut={this.userLogOut.bind(this)} />
+          userLoggedOut={this.userLogOut.bind(this)}
+          onCreateUser={this.createNewUser.bind(this)} />
           <Search
           onUpdateSearch={this.handleUpdateSearch.bind(this)}
           onUpdateDrop={this.handleUpdateDrop.bind(this)}

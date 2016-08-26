@@ -13,7 +13,7 @@ users.post('/',
     (req,res) => res.status(201).json({data: 'success'}).end()
 )
 
-users.use( tokenService.validateToken )
+// users.use( tokenService.validateToken )
 
 users.get('/', db.listUsers, (req,res)=>
   res.json( res.users))
