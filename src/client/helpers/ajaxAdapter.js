@@ -1,7 +1,7 @@
 const ajaxAdapter = {
 
  constructor(fetch){
-    if(!fetch) throw "We need the Fetch library to make this work, bru.";
+    if(!fetch) throw "how can we fetch without fetch!?!?";
   },
 
   createUser(newUser){
@@ -15,10 +15,14 @@ const ajaxAdapter = {
     .then( r=> r.json() )
   },
 
+  loginUser(user){
+    return fetch('/')
+  }
+
   getUserPantry() {
     return fetch('/pantry')
     .then(res=>res.json())
-  }
+  },
 
   addPantry(item){
     console.log(item)
@@ -56,7 +60,7 @@ const ajaxAdapter = {
   recipeCall(query) {
     return fetch(`spoon/recipe?recipe=${query}`)
     .then(res => res.json() )
-  },
+  }
 
 
 }

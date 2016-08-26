@@ -24,27 +24,25 @@ export default class SearchContainer extends React.Component {
       ingredients: [],
       pantry: {},
       selected: false,
-      user: false
+      user: true
     }
   }
 
    componentDidMount(){
-    // go to the db and get all the tasks
-    ajax.pantryCall().then(pantry=>{
-      // when the data comes back, update the state
-      this.setState({ pantry: pantry })
-    })
+    if(this.state.user){
+      ajax.getUserPantry().then(pantry=>{
+        this.setState({ pantry: pantry })
+      })
+    }
   }
 
   handleUpdateDrop(event){
-    // console.log(event.target.value)
     this.setState({
       dropdown: event.target.value,
     })
   }
 
   handleUpdateSearch(event){
-    // console.log(event.target.value)
     this.setState({
       query: event.target.value
     })
@@ -70,34 +68,31 @@ export default class SearchContainer extends React.Component {
       dropdown: this.state.dropdown,
       query: "",
       searched: true
-
+      })
     })
-  })
   }
 }
 
-addToPantry(event){
-  event.preventDefault();
-  let item = {item:event.target.value}
-  console.log()
-  ajax.addPantry(item).then(pantry=>{
-  ajax.pantryCall().then(pantry=>{
-      this.setState({ pantry: pantry,
+  addToPantry(event){
+    event.preventDefault();
+    let item = {item:event.target.value}
+    console.log()
+    ajax.addPantry(item).then(pantry=>{
+    ajax.pantryCall().then(pantry=>{
+        this.setState({ pantry: pantry,
        })
-
     })})
   }
 
-deleteFromPantry(event){
-  event.preventDefault();
-  let item = {item: event.target.value}
-  ajax.deletePantry(item).then(pantry=>{
-    ajax.pantryCall().then(pantry=>{
-      this.setState({pantry: pantry})
+  deleteFromPantry(event){
+    event.preventDefault();
+    let item = {item: event.target.value}
+    ajax.deletePantry(item).then(pantry=>{
+      ajax.pantryCall().then(pantry=>{
+        this.setState({pantry: pantry})
+      })
     })
-  })
-}
-
+  }
 
  selectRecipe(event){
     event.preventDefault();
@@ -111,25 +106,38 @@ deleteFromPantry(event){
         selected: true
       })
     })
+  }
 
+  userLogIn(){
+    ajax.getMyPantry(localStorage.user_id).then( myPantry => {
+      this.setState({
+        pantry: myPantry,
+        user:true,
+      })
+    })
+  }
+
+  userLogOut(){
+    this.setState({
+      dropdown:"cuisine",
+      query: "",
+      searched: false,
+      results: [],
+      ingredients: [],
+      pantry: {},
+      selected: false,
+      user: false
+    })
   }
 
 
   render(){
-      // if(!this.state.user){
-      //   return(
-
-      //     )
-
-
-      // } else
       if(this.state.searched&&this.state.selected){
       return (
 
           <div className="row">
             <SmallLogo />
             <div className="col-sm-4">
-
               <Ingredients
                 addToPantry={this.addToPantry.bind(this)}
                 recipes={this.state.results}
@@ -172,7 +180,10 @@ deleteFromPantry(event){
       } else {
       return(
         <div>
-          <Header />
+          <Header
+          user={this.state.user}
+          userLoggedIn={this.userLogIn.bind(this)}
+          userLoggedOut={this.userLogOut.bind(this)} />
           <Search
           onUpdateSearch={this.handleUpdateSearch.bind(this)}
           onUpdateDrop={this.handleUpdateDrop.bind(this)}

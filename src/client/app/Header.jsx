@@ -6,6 +6,7 @@ const cookItLogoSm = require('../images/cookit-small.png')
 
 
 export default class Header extends React.Component {
+
   handleSubmit(event){
   event.preventDefault()
   let signInForm = event.target
@@ -16,27 +17,31 @@ export default class Header extends React.Component {
   ajax.loginUser(user).then( user => {
       localStorage.setItem('token', user.token)
       localStorage.setItem('user_id', jwtDecode(user.token).user_id)
-      // if(user.success){
-      //   this.props.userLoggedIn()
-      // } else {
-      //   signInForm.reset()
-      // }
-    }
-    )
+      if(user.success){
+        this.props.userLoggedIn()
+      } else {
+        signInForm.reset()
+      }
+    })
   }
 
   clearLocalStorage(event){
     localStorage.setItem('token','')
     localStorage.setItem('user','')
     console.log('did you clean the kitchen!?!?')
-    // this.props.userLoggedOut()
+    this.props.userLoggedOut()
   }
 
-  // myRecipes(event){
-  //   event.preventDefault()
-  //   this.props.showUserRecipes()
-  //   event.target.reset()
-  // }
+  myRecipes(event){
+    event.preventDefault()
+    this.props.showUserRecipes()
+    event.target.reset()
+  }
+
+  myPantry(event){
+    event.preventDefault()
+    console.log('my pantry')
+  }
 
   render(){
     if(!this.props.user){
@@ -74,18 +79,16 @@ export default class Header extends React.Component {
     )
   } else {
     return (
-      <div className="headerUser">
-        <h1>FlakeBot</h1>
-        <img className="fBUser" src="http://www.videogamesprites.net/Earthbound/Party/Ness/Ness%20(Robot)%20(Front).gif" alt=""/>
-
+      <div className="header">
+        <div className='login'>
           <table className='signedIn'>
             <tbody>
               <tr>
                 <td>
-                  <button onClick={this.bro.bind(this)}>Talk to FlakeBot</button>
+                  <button onClick={this.myRecipes.bind(this)}>My Recipes</button>
                 </td>
                 <td>
-                  <button onClick={this.myEvents.bind(this)}>My Events</button>
+                  <button onClick={this.myPantry.bind(this)}>My Pantry</button>
                 </td>
                 <td>
                   <button onClick={this.clearLocalStorage.bind(this)}>Log Out</button>
@@ -93,6 +96,8 @@ export default class Header extends React.Component {
               </tr>
             </tbody>
           </table>
+        </div>
+        <img className="logo" src={cookItLogo}/>
       </div>
     )
   }
