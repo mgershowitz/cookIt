@@ -1,18 +1,8 @@
-const apikey= process.env.COOKAPI;
-const myInit = {
- method: 'GET',
- headers: {
-   // "X-Mashape-Key": "9nRKaBF7ulmshtZuHpCkDn8KSmPGp19tV5Djsn4isweJZ0ax0S"
-    "X-Mashape-Key": apikey }
-
-}
-
 const ajaxAdapter = {
 
  constructor(fetch){
     if(!fetch) throw "We need the Fetch library to make this work, bru.";
   },
-
 
   createUser(newUser){
     return fetch('/api/users',{
@@ -25,7 +15,12 @@ const ajaxAdapter = {
     .then( r=> r.json() )
   },
 
-addPantry(item){
+  getUserPantry() {
+    return fetch('/pantry')
+    .then(res=>res.json())
+  }
+
+  addPantry(item){
     console.log(item)
     return fetch('/pantry',{
       method:'POST',
@@ -37,7 +32,7 @@ addPantry(item){
     .then( r=> r.json() )
   },
 
-deletePantry(item){
+  deletePantry(item){
     return fetch('/pantry',{
       method:'DELETE',
       headers:{
@@ -48,38 +43,21 @@ deletePantry(item){
     .then( r=> console.log(r) )
   },
 
-  cuisineCall(query) {
-    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine='+ query + '&number=12'
-    return fetch(url, myInit)
+  cuisineCall(cuisine) {
+    return fetch(`/spoon/cuisine?c=${cuisine}`)
     .then(res => res.json() )
-    .then(console.log('cuisine call worked'))
   },
 
-
-
-  ingredientsCall(query) {
-    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients='+ query.replace(/\s/,'%2C')+ '&number=12'
-    return fetch(url, myInit)
+  ingredientsCall(ingredients) {
+    return fetch(`/spoon/ingredients?i=${ingredients.replace(/\s/,'%2C')}`)
     .then(res => res.json() )
-
   },
-
-
-
 
   recipeCall(query) {
-    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/'+ query + '/information'
-    return fetch(url, myInit)
+    return fetch(`spoon/recipe?recipe=${query}`)
     .then(res => res.json() )
-},
+  },
 
-
-
-
-  pantryCall() {
-    return fetch('/pantry')
-    .then(res=>res.json())
-    }
 
 }
 

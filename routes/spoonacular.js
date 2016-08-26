@@ -4,9 +4,14 @@ const db        = require('../models/spoon')
 
 const sendJSONresp = (req,res)=>res.json(res.rows)
 
-spoon.route('/')
-  .get(db.spoonacular, sendJSONresp)
+spoon.route('/cuisine')
+  .get(db.getByCuisine, sendJSONresp)
 
+spoon.route('/ingredients')
+  .get(db.getByIngredient, sendJSONresp)
+
+spoon.route('/recipe')
+  .get(db.getRecipeInfo, sendJSONresp)
 
 
 module.exports = spoon;
