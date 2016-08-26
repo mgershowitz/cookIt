@@ -1,4 +1,3 @@
-
 import React            from 'react'
 import Search           from './Search.jsx'
 import Results          from './Results.jsx'
@@ -26,14 +25,16 @@ export default class SearchContainer extends React.Component {
       ingredients: [],
       pantry: {},
       selected: false,
-      user: false
     }
   }
 
    componentDidMount(){
-    if(this.state.user){
-      ajax.getUserPantry().then(pantry=>{
-        this.setState({ pantry: pantry })
+    if(localStorage.token){
+      ajax.getUserPantry(localStorage.user_id).then(pantry=>{
+        this.setState({
+          pantry: pantry,
+          user: true
+        })
       })
     }
   }
@@ -65,15 +66,15 @@ export default class SearchContainer extends React.Component {
   }
   if(this.state.dropdown === "ingredient"){
     ajax.ingredientsCall(this.state.query).then( ingredient =>{
-    this.setState({
-      results: ingredient,
-      dropdown: this.state.dropdown,
-      query: "",
-      searched: true
+      this.setState({
+        results: ingredient,
+        dropdown: this.state.dropdown,
+        query: "",
+        searched: true
+        })
       })
-    })
+    }
   }
-}
 
   addToPantry(event){
     event.preventDefault();
@@ -96,7 +97,7 @@ export default class SearchContainer extends React.Component {
     })
   }
 
- selectRecipe(event){
+  selectRecipe(event){
     event.preventDefault();
     console.log(event.target.alt)
     //ajax.secondCall(event.target.alt)
