@@ -1,0 +1,256 @@
+
+* {
+  margin: 0 auto;
+}
+
+.recipe_results {
+  text-align: center;
+}
+
+.result_container {
+  width: 100%;
+}
+
+h4 {
+  clear:left;
+}
+
+.recipe_image {
+  height: 275px;
+  width: 275px;
+  border: 2px solid black;
+}
+.image_container {
+  display: inline-block;
+  width: 30%;
+}
+
+.image_container h3 {
+  font-size: 28px;
+  padding-bottom: 20px;
+}
+
+.header {
+  text-align: center;
+  background-image: url('http://1.bp.blogspot.com/-MK5UNrqLiD4/U7kCxKWUilI/AAAAAAAAUZU/dAQHq34XCxg/s1600/food-wallpapers-34.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login form {
+  position: fixed;
+  right:3%;
+  top:2%;
+}
+
+.login label {
+  color: #fff;
+}
+
+.signUp {
+  position: fixed;
+  right:3%;
+  top:15%;
+}
+
+.jumbotron{
+  background: none;
+}
+.input-group{
+  background-color: #eeeeee;
+  width: 50%;
+  border: 0;
+  height: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 14px auto;
+}
+.input-group:focus{
+  border: 0;
+  outline:0;
+}
+
+.logo {
+  height: 35vh;
+  margin-bottom: 5%;
+}
+
+.headerName {
+  text-align: center;
+  color: #ffffff;
+}
+
+.ingredients {
+  width: 300px;
+  height: 100%;
+  /*border: 3px solid red;*/
+  margin-left: 10px;
+
+}
+
+.pantry {
+  width: 300px;
+  height: 100%;
+  /*border: 3px solid blue;*/
+  margin-right: 10px;
+}
+
+/******************************
+INDIVIDUAL RECIPE PAGE
+******************************/
+ul li {
+  list-style-type: none;
+}
+.ingredients h3 {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.ingredients-list{
+  padding: 0 5px;
+}
+.ingredients-list li{
+  text-align: left;
+  margin: 3px 0;
+}
+.smallLogo {
+  padding: 8px 0px 0px 15px;
+}
+
+.pantry h3 {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.pantry-list{
+  padding: 0 5px;
+}
+.pantry-list li{
+  text-align: left;
+  margin: 3px 0;
+}
+
+/*Button and form styling credited to bootstrap*/
+.button,
+.login button,
+/*input[type="submit"],*/
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 3.2vh;
+  padding: 0 15px;
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 3vh;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #777;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+
+/*Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+.login input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 3vh;
+  width: 7vw;
+  margin-right: 5%;
+  padding: 3px 5px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  /*box-sizing: border-box; */
+}
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+.login input[type="search"],
+.login input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
