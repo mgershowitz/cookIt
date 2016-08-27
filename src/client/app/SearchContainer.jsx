@@ -8,7 +8,6 @@ import Ingredients      from './Ingredients.jsx'
 import Pantry           from './Pantry.jsx'
 import Login            from './Login.jsx'
 import CreateUser       from './CreateUser.jsx'
-// import SmallLogo        from './SmallLogo.jsx'
 import Header           from './Header.jsx'
 const jwtDecode         = require('jwt-decode');
 
