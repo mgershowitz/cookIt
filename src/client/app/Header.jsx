@@ -90,12 +90,12 @@ export default class Header extends React.Component {
           <table className='signedIn'>
             <tbody>
               <tr>
-                <td>
+               {/*} <td>
                   <button onClick={this.myRecipes.bind(this)}>My Recipes</button>
                 </td>
                 <td>
                   <button onClick={this.myPantry.bind(this)}>My Pantry</button>
-                </td>
+                </td>*/}
                 <td>
                   <button onClick={this.clearLocalStorage.bind(this)}>Log Out</button>
                 </td>
@@ -154,12 +154,12 @@ export default class Header extends React.Component {
           <table className='signedIn'>
             <tbody>
               <tr>
-                <td>
+                {/*<td>
                   <button onClick={this.myRecipes.bind(this)}>My Recipes</button>
                 </td>
                 <td>
                   <button onClick={this.myPantry.bind(this)}>My Pantry</button>
-                </td>
+                </td>*/}
                 <td>
                   <button onClick={this.clearLocalStorage.bind(this)}>Log Out</button>
                 </td>

@@ -1,12 +1,7 @@
 import React              from 'react'
 import ReactDOM           from 'react-dom'
 import SearchContainer    from './SearchContainer.jsx'
-import Header             from './Header.jsx'
-
-
-// import ajax               from '../helpers/ajaxAdapter.js'
-
-
+import Footer             from './Footer.jsx'
 
 
 export default class App extends React.Component{
@@ -17,11 +12,11 @@ export default class App extends React.Component{
           <container>
               <div>
               <SearchContainer />
+              <Footer />
               </div>
           </container>
         )
     }
 }
-{/*this is a tes*/}
-// mount our App at #container
+
 ReactDOM.render(<App />, document.querySelector('#container'))
