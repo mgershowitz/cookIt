@@ -32,6 +32,9 @@ h4 {
 
 .header {
   text-align: center;
+}
+
+.header, .smallHeader {
   background-image: url('http://1.bp.blogspot.com/-MK5UNrqLiD4/U7kCxKWUilI/AAAAAAAAUZU/dAQHq34XCxg/s1600/food-wallpapers-34.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -51,6 +54,11 @@ h4 {
   position: fixed;
   right:3%;
   top:15%;
+}
+
+.signedIn {
+  position: fixed;
+  right: 3%;
 }
 
 .jumbotron{

@@ -8,7 +8,7 @@ import Ingredients      from './Ingredients.jsx'
 import Pantry           from './Pantry.jsx'
 import Login            from './Login.jsx'
 import CreateUser       from './CreateUser.jsx'
-import SmallLogo        from './SmallLogo.jsx'
+// import SmallLogo        from './SmallLogo.jsx'
 import Header           from './Header.jsx'
 const jwtDecode         = require('jwt-decode');
 
@@ -165,7 +165,12 @@ export default class SearchContainer extends React.Component {
       return (
 
           <div className="row">
-            <SmallLogo />
+            <Header
+          user={this.state.user}
+          searched={this.state.searched}
+          userLoggedIn={this.userLogIn.bind(this)}
+          userLoggedOut={this.userLogOut.bind(this)}
+          onCreateUser={this.createNewUser.bind(this)} />
             <div className="col-sm-4">
               <Ingredients
                 addToPantry={this.addToPantry.bind(this)}
@@ -194,7 +199,12 @@ export default class SearchContainer extends React.Component {
      } else if(this.state.searched){
       return (
           <div>
-          <SmallLogo />
+          <Header
+          user={this.state.user}
+          searched={this.state.searched}
+          userLoggedIn={this.userLogIn.bind(this)}
+          userLoggedOut={this.userLogOut.bind(this)}
+          onCreateUser={this.createNewUser.bind(this)} />
             <div>
             </div>
             <div>
@@ -211,6 +221,7 @@ export default class SearchContainer extends React.Component {
         <div>
           <Header
           user={this.state.user}
+          searched={this.state.searched}
           userLoggedIn={this.userLogIn.bind(this)}
           userLoggedOut={this.userLogOut.bind(this)}
           onCreateUser={this.createNewUser.bind(this)} />
